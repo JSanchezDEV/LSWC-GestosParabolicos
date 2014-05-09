@@ -13,9 +13,6 @@
 @interface AngryBirdsViewController () <MovementModel>
 @property (weak, nonatomic) IBOutlet ParabolicModel *model;
 @property (weak, nonatomic) IBOutlet AngryBirdsView *trayView;
-@property (weak, nonatomic) IBOutlet UISlider *sliderSpeed;
-@property (weak, nonatomic) IBOutlet UISlider *sliderAngle;
-@property (weak, nonatomic) IBOutlet UISlider *sliderDistance;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEject;
 @property (weak, nonatomic) IBOutlet UIButton *buttonReset;
 @property (weak, nonatomic) IBOutlet UILabel *labelResult;
@@ -41,11 +38,17 @@
     UIPanGestureRecognizer *panRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(processPan:)];
     [self.trayView addGestureRecognizer: panRec];
     
+    //mover cerdo
+    UIPanGestureRecognizer *pan2Rec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(process2Pan:)];
+    pan2Rec.minimumNumberOfTouches = 2;
+    [self.trayView addGestureRecognizer: pan2Rec];
+    
     self.trayView.dataSource = self;
-    [self changeSpeed:self.sliderSpeed];
-    [self changeAngle:self.sliderAngle];
-    [self changeDistance:self.sliderDistance];
-    [self.trayView dibujaBackground];
+    
+    self.model.angle = 0;
+    self.model.speed = 0;
+    self.trayView.zoomValue = 0;
+    self.trayView.targetDistance = 338;
 }
 
 - (void)processPinch:(UIPinchGestureRecognizer *)sender {
@@ -61,23 +64,38 @@
     sender.scale = 1;
     
     [self.trayView setNeedsDisplay];
-    [self.trayView dibujaBackground];
     
 }
 
 - (void)processPan:(UIPanGestureRecognizer *)sender {
     CGPoint currentTrans = [sender translationInView:[sender.view superview]];
-    CGPoint currentPos = [sender locationInView:[sender.view superview]];
     
+    CGFloat factor = 3;
+    CGFloat currentAngle = 0;
+    if(currentTrans.x != 0){
+        currentAngle =  -atanf(currentTrans.y / currentTrans.x);
+        currentAngle = currentAngle > 1 ? 1 : currentAngle;
+        currentAngle = currentAngle < 0 ? 0 : currentAngle;
+    }
+    CGFloat currentSpeed = sqrtf(currentTrans.x * currentTrans.x + currentTrans.y * currentTrans.y) / factor;
+    self.model.angle = currentAngle;
+    self.model.speed = currentSpeed;
     
     [self.trayView setNeedsDisplay];
-    [self.trayView dibujaBackground];
     
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+- (void)process2Pan:(UIPanGestureRecognizer *)sender {
+    CGPoint currentTrans = [sender translationInView:[sender.view superview]];
+    
+    self.trayView.targetDistance += currentTrans.x;
+    
+    self.trayView.targetDistance = self.trayView.targetDistance > 526 ? 526 : self.trayView.targetDistance;
+    self.trayView.targetDistance = self.trayView.targetDistance < 150 ? 150 : self.trayView.targetDistance;
+    
+    [sender setTranslation:CGPointZero inView:sender.view];
+    
     [self.trayView setNeedsDisplay];
-    [self.trayView dibujaBackground];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,42 +104,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)changeSpeed:(UISlider *)sender {
-    self.model.speed = (sender.value);
-    [self.trayView setNeedsDisplay];
-}
-
-- (IBAction)changeAngle:(UISlider *)sender {
-    self.model.angle = sender.value;
-    [self.trayView setNeedsDisplay];
-}
-
-- (IBAction)changeDistance:(UISlider *)sender {
-    self.trayView.targetDistance = sender.value;
-    [self.trayView setNeedsDisplay];
-}
-
 - (IBAction)ejectBird:(UIButton *)sender {
     [sender setEnabled:NO];
-    [self.sliderSpeed setEnabled:NO];
-    [self.sliderAngle setEnabled:NO];
-    [self.sliderDistance setEnabled:NO];
     [self.buttonReset setEnabled:YES];
+    [self.trayView setUserInteractionEnabled:NO];
     [self compruebaResultado];
     [self.labelResult setHidden:NO];
 }
 
 - (IBAction)resetGame:(UIButton *)sender {
     [sender setEnabled:NO];
-    [self.sliderSpeed setEnabled:YES];
-    [self.sliderAngle setEnabled:YES];
-    [self.sliderDistance setEnabled:YES];
     [self.buttonEject setEnabled:YES];
     [self.labelResult setHidden:YES];
-    [self.sliderSpeed setValue:[self valorMedioDeSlider:self.sliderSpeed]];
-    [self.sliderAngle setValue:[self valorMedioDeSlider:self.sliderAngle]];
-    [self.sliderDistance setValue:[self valorMedioDeSlider:self.sliderDistance]];
-    [self viewDidLoad];
+    [self.trayView setUserInteractionEnabled:YES];
+    self.model.angle = 0;
+    self.model.speed = 0;
+    self.trayView.zoomValue = 0;
+    self.trayView.targetDistance = 338;
+    [self.trayView setNeedsDisplay];
 }
 
 - (CGFloat)valorMedioDeSlider:(UISlider *)slider{

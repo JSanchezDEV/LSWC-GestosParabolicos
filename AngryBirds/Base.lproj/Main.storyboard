@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CIj-W4-RDU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CIj-W4-RDU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -8,13 +8,20 @@
         <scene sceneID="PkJ-Jq-A6f">
             <objects>
                 <viewController id="ksP-11-RMc" customClass="MasterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mSx-l9-Lnj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xrj-Gt-OpC"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="z8J-w5-ACj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JYa-ZE-IVy">
-                                <rect key="frame" x="0.0" y="51" width="320" height="265"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYa-ZE-IVy">
+                                <rect key="frame" x="0.0" y="64" width="320" height="252"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="oxC-yV-ImB"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="angry-birds-button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -22,9 +29,12 @@
                                     <segue destination="vXZ-lx-hvc" kind="push" identifier="showOriginal" id="EyF-WN-1Mh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ja9-rT-lCX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ja9-rT-lCX">
                                 <rect key="frame" x="0.0" y="316" width="320" height="252"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="FtG-AZ-F2l"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="star-wars-button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -34,6 +44,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xrj-Gt-OpC" firstAttribute="top" secondItem="Ja9-rT-lCX" secondAttribute="bottom" id="4bh-80-HIv"/>
+                            <constraint firstItem="Ja9-rT-lCX" firstAttribute="top" secondItem="JYa-ZE-IVy" secondAttribute="bottom" id="7SY-ct-WdF"/>
+                            <constraint firstItem="JYa-ZE-IVy" firstAttribute="top" secondItem="mSx-l9-Lnj" secondAttribute="bottom" id="FkR-i2-5Rn"/>
+                            <constraint firstAttribute="centerX" secondItem="JYa-ZE-IVy" secondAttribute="centerX" id="QhO-1p-z7i"/>
+                            <constraint firstItem="Ja9-rT-lCX" firstAttribute="centerX" secondItem="JYa-ZE-IVy" secondAttribute="centerX" id="oVm-fs-Cp9"/>
+                            <constraint firstItem="Ja9-rT-lCX" firstAttribute="height" secondItem="JYa-ZE-IVy" secondAttribute="height" id="tNy-8c-SEg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Angry Birds" id="YTL-6G-cO9"/>
                 </viewController>
@@ -45,32 +63,20 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="AngryBirdsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0bb-v2-3Pl"/>
+                        <viewControllerLayoutGuide type="bottom" id="voi-oE-cHc"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fuerza" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qug-HR-wqQ">
-                                <rect key="frame" x="20" y="78" width="61" height="27"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distancia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uT9-6m-JGA">
-                                <rect key="frame" x="20" y="160" width="76" height="27"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ángulo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X2X-B4-rTk">
-                                <rect key="frame" x="20" y="120" width="56" height="26"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nRa-dI-Fdm">
-                                <rect key="frame" x="70" y="518" width="63" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRa-dI-Fdm">
+                                <rect key="frame" x="65" y="518" width="63" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="63" id="0Eg-wy-uYb"/>
+                                </constraints>
                                 <state key="normal" title="Lanzar!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -78,43 +84,16 @@
                                     <action selector="ejectBird:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oeu-aM-mxa"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="47" minValue="21" maxValue="73" id="vmg-j4-CvD">
-                                <rect key="frame" x="106" y="75" width="196" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="changeSpeed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="yFU-nL-ZuW"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.02" maxValue="0.97999999999999998" id="4Ib-Bd-KUE">
-                                <rect key="frame" x="106" y="116" width="196" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="changeAngle:" destination="vXZ-lx-hvc" eventType="valueChanged" id="MOl-nA-Wxh"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="338" minValue="150" maxValue="526" id="BRh-5b-lcV">
-                                <rect key="frame" x="106" y="157" width="196" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="changeDistance:" destination="vXZ-lx-hvc" eventType="valueChanged" id="e8q-DZ-o2s"/>
-                                </connections>
-                            </slider>
-                            <view contentMode="scaleToFill" id="enP-8w-wp3" customClass="AngryBirdsView">
-                                <rect key="frame" x="20" y="198" width="279.99999998045752" height="277"/>
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="enP-8w-wp3" customClass="AngryBirdsView">
+                                <rect key="frame" x="0.0" y="64" width="320" height="439"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <subviews>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bc6-gR-XdF">
-                                        <rect key="frame" x="20" y="33" width="240" height="55"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="439" id="SIU-qE-Ktm"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XsO-4I-4AP">
-                                <rect key="frame" x="194" y="518" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsO-4I-4AP">
+                                <rect key="frame" x="195" y="518" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Reiniciar">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,8 +102,30 @@
                                     <action selector="resetGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="aNh-vG-DEx"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bc6-gR-XdF">
+                                <rect key="frame" x="40" y="191" width="240" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="NWe-4B-Yra"/>
+                                    <constraint firstAttribute="width" constant="240" id="cY0-FI-JjT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XsO-4I-4AP" firstAttribute="centerY" secondItem="nRa-dI-Fdm" secondAttribute="centerY" id="2Sm-LM-0kY"/>
+                            <constraint firstItem="voi-oE-cHc" firstAttribute="top" secondItem="XsO-4I-4AP" secondAttribute="bottom" constant="20" id="9bP-we-1P8"/>
+                            <constraint firstAttribute="trailing" secondItem="enP-8w-wp3" secondAttribute="trailing" id="DcJ-XD-BbR"/>
+                            <constraint firstItem="XsO-4I-4AP" firstAttribute="top" secondItem="enP-8w-wp3" secondAttribute="bottom" constant="15" id="JEA-VE-aNW"/>
+                            <constraint firstAttribute="centerX" secondItem="bc6-gR-XdF" secondAttribute="centerX" id="KeD-0A-Xei"/>
+                            <constraint firstItem="enP-8w-wp3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Mru-Ak-ssA"/>
+                            <constraint firstItem="nRa-dI-Fdm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="65" id="O3x-su-A8T"/>
+                            <constraint firstAttribute="trailing" secondItem="XsO-4I-4AP" secondAttribute="trailing" constant="65" id="rJO-NT-Gc0"/>
+                            <constraint firstAttribute="centerY" secondItem="bc6-gR-XdF" secondAttribute="centerY" constant="65" id="xnw-Zv-ZOR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iFh-l3-Unq"/>
                     <connections>
@@ -132,9 +133,6 @@
                         <outlet property="buttonReset" destination="XsO-4I-4AP" id="oFS-Wn-l5o"/>
                         <outlet property="labelResult" destination="bc6-gR-XdF" id="FdS-mo-0Sh"/>
                         <outlet property="model" destination="ghl-oZ-o5g" id="flY-Pe-jue"/>
-                        <outlet property="sliderAngle" destination="4Ib-Bd-KUE" id="nZN-Wb-roq"/>
-                        <outlet property="sliderDistance" destination="BRh-5b-lcV" id="bq4-28-0g9"/>
-                        <outlet property="sliderSpeed" destination="vmg-j4-CvD" id="XxR-Gl-gYb"/>
                         <outlet property="trayView" destination="enP-8w-wp3" id="qUP-ks-IIL"/>
                     </connections>
                 </viewController>

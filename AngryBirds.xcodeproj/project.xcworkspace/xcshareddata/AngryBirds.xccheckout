@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B5706581-53BA-4F75-B1D3-6406D282E818</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AngryBirds</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C2A9735F-DA35-4CE3-A072-D15C9342319D</key>
+		<string>https://github.com/JSanchezDEV/LSWC-GestosParabolicos.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AngryBirds.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C2A9735F-DA35-4CE3-A072-D15C9342319D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/JSanchezDEV/LSWC-GestosParabolicos.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C2A9735F-DA35-4CE3-A072-D15C9342319D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C2A9735F-DA35-4CE3-A072-D15C9342319D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LSWC-GestosParabolicos</string>
+		</dict>
+	</array>
+</dict>
+</plist>
